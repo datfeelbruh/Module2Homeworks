@@ -30,7 +30,7 @@ public class Homework2 {
         // 1120 - из примера, 0 - при пустом листе
         List<Integer> integers = List.of(1,2,3,4,5,5,8,8,9);
         Random random = new Random(1);
-        int result = integers.stream()
+        integers.stream()
                 .filter(e -> e > 4)
                 .distinct()
                 .map(User::new)
@@ -45,8 +45,7 @@ public class Homework2 {
                 .flatMap(e -> e.getUserList().stream())
                 .map(e -> e * 10)
                 .reduce(Integer::sum)
-                .orElse(0);
-        System.out.println(result);
+                .ifPresentOrElse(System.out::println, () -> System.out.println(0));
 
         //Задача №2
         // 1. Отсортировать список lists так, чтобы сначала были самые большие списки по размеру
